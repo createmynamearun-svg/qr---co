@@ -4,6 +4,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
+import CustomerMenu from "./pages/CustomerMenu";
+import KitchenDashboard from "./pages/KitchenDashboard";
+import WaiterDashboard from "./pages/WaiterDashboard";
+import BillingCounter from "./pages/BillingCounter";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -15,8 +21,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Public routes */}
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/order" element={<CustomerMenu />} />
+
+          {/* Staff routes */}
+          <Route path="/kitchen" element={<KitchenDashboard />} />
+          <Route path="/waiter" element={<WaiterDashboard />} />
+          <Route path="/billing" element={<BillingCounter />} />
+
+          {/* Admin routes */}
+          <Route path="/admin" element={<AdminDashboard />} />
+
+          {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
